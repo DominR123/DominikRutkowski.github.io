@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   viewBox="0 0 24 24"
+   fill="none"
+   stroke="#000000"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   class="lucide lucide-carrot-icon lucide-carrot"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="carrot _black.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="7.375"
+     inkscape:cx="16"
+     inkscape:cy="16"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <path
+     d="m 2.9841426,3.4824189 c 0,0 3.500001,9.8699991 6.360001,12.7299991 A 4.5007361,4.5007361 0 0 0 15.714143,9.8524185 c -2.87,-2.87 -12.7300004,-6.3699996 -12.7300004,-6.3699996 z m 7.7000014,6.3699996 2.039999,-2.05 m -3.0399994,8.7499995 2.4599994,-2.46"
+     id="path2"
+     inkscape:connector-curvature="0" />
+  <path
+     d="m 23.678006,16.355905 c 0,0 -1.33,2 -3.5,2 -1.64,0 -3.5,-2 -3.5,-2 0,0 1.33,-2 3.5,-2 2.17,0 3.5,2 3.5,2 z"
+     id="path4"
+     inkscape:connector-curvature="0" />
+  <path
+     d="m 16.678006,23.355905 c 0,0 -2,-1.33 -2,-3.5 0,-2.17 2,-3.5 2,-3.5 0,0 2,1.84 2,3.5 0,2.17 -2,3.5 -2,3.5 z"
+     id="path6"
+     inkscape:connector-curvature="0" />
+</svg>
