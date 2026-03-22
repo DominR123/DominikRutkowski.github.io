@@ -31,6 +31,9 @@ header {
   flex-direction: column;
   justify-content: center;
   border-right: 2px solid #504e4e;
+  background-image: linear-gradient(rgba(42, 58, 42, 0.7), rgba(42, 58, 42, 0.7)), url('assets/header_2.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .header-text {
@@ -49,9 +52,6 @@ header {
   line-height: 5.5;
   white-space: normal;
   word-spacing: 100vw;
-  background-image: linear-gradient(rgba(42, 58, 42, 0.7), rgba(42, 58, 42, 0.7)), url('assets/header_2.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
 .image-container {
