@@ -36,23 +36,24 @@ header {
   width: 100%;
   height: auto;
   flex-shrink: 0;
-  padding: 40px 55px;
+  padding: 40px 60px;
   text-align: center;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
   0 0 30px rgba(255, 255, 255, 0.2);
   background-color: transparent;
   color: white;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: 1px;
-  line-height: 2.5;
+  line-height: 4.5;
   border-bottom: 2px solid #504e4e;
   position: relative;
   transform: none;
   left: auto;
   top: auto;
   white-space: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .text {
@@ -136,18 +137,25 @@ footer {
   grid-row: 3;
 }
 
+.nr2 .text_title,
+.nr2 .text h2,
+.nr2 .text h3 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 h1 {
   font-size: 24px;
   font-weight: 900;
   letter-spacing: 5px;
   margin: 0;
-  color:white;
+  color: white;
 }
 
 h2 {
   font-size: 20px;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   width: auto;
   color: #cccccc;
   padding-left: 20px;
