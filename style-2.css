@@ -124,14 +124,25 @@ header {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   margin-top: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.image-container_2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.header-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.header-img.img-1 { background-image: url('assets/header_1.jpg'); }
+.header-img.img-2 { background-image: url('assets/header_2.jpg'); }
+.header-img.img-3 { background-image: url('assets/header_3.jpg'); }
+
+.bg-water { background-image: url('assets/drink_water.jpg'); }
+.bg-sport { background-image: url('assets/exercise.jpg'); }
+.bg-food { background-image: url('assets/healthy_eating3.jpg'); }
+
 
 h1 {
   font-size: 24px;
@@ -237,15 +248,14 @@ footer {
     padding: 0;
   }
 
-  .image-container img {
+  .header-img {
     display: none;
   }
 
-  .image-container img:first-of-type {
+  .header-img:first-of-type {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .nr1, .nr2, .nr3 {
@@ -265,10 +275,7 @@ footer {
     width: 100%;
     height: 200px;
     margin-top: 15px;
-  }
-
-  .image-container_2 img {
-    transform: scale(1.20);
+    background-size: 120%;
   }
 
   .text {
