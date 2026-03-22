@@ -239,8 +239,8 @@ footer {
   }
 
   .nr1 .text, .nr2 .text, .nr3 .text {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   h1, h2 {
