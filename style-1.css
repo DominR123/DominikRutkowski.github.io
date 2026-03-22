@@ -151,6 +151,14 @@ header {
   align-self: flex-start;
 }
 
+.nr1 .text, .nr3 .text {
+  padding-left: 20px;
+}
+
+.nr2 .text {
+  padding-right: 20px;
+}
+
 .text_title {
   margin-top: 0;
   width: 100%;
@@ -228,6 +236,11 @@ footer {
 
   .text, .text_title, h2, h3 {
     width: 100%;
+  }
+
+  .nr1 .text, .nr2 .text, .nr3 .text {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   h1, h2 {
