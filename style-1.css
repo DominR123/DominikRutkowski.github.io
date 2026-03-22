@@ -122,8 +122,11 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 330px;
+  min-height: 330px;
+  height: auto;
   background-color: White;
+  padding: 40px 0;
+  align-items: stretch;
 }
 
 .image-container_2 {
