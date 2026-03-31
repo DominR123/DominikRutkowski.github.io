@@ -10,7 +10,7 @@ function isValidTask(text, date) {
   }
   return true;
 }
-
+addEventListener('click')
 // Pobierz zadania z localStorage
 function getTasks() {
   return JSON.parse(localStorage.getItem('tasks') || '[]');
