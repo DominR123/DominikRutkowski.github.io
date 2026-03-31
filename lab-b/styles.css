@@ -1,0 +1,13 @@
+body {
+  background-color: #f3fff3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.todo-app{
+  width: 500px;
+  height: 300px;
+  border: double 7px;
+}
