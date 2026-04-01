@@ -1,13 +1,144 @@
 body {
-  background-color: #f3fff3;
+  background: linear-gradient(135deg, #e0ffe0 0%, #b3e6ff 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
 }
-.todo-app{
-  width: 500px;
-  height: 300px;
-  border: double 7px;
+
+.todo-app {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  width: 420px;
+  padding: 32px 24px 24px 24px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #b3e6ff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.search-input:focus {
+  border: 1.5px solid #0099cc;
+}
+
+.todo-list {
+  margin-top: 8px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f7f7fa;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  transition: background 0.2s;
+}
+.todo-item:hover {
+  background: #e6f7ff;
+}
+
+.todo-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.todo-text, .todo-date {
+  flex: 1;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.todo-text:hover, .todo-date:hover {
+  background: #e0f7fa;
+}
+
+.todo-edit-input, .todo-edit-date {
+  flex: 1;
+  font-size: 1rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #b3e6ff;
+  outline: none;
+}
+
+.todo-date {
+  color: #0099cc;
+  font-size: 0.95rem;
+  text-align: right;
+  min-width: 90px;
+}
+
+.delete-button {
+  background: #ffdddd;
+  border: none;
+  border-radius: 6px;
+  color: #c00;
+  font-size: 0.95rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.delete-button:hover {
+  background: #ffb3b3;
+}
+
+.todo-add {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.todo-add input[type="text"], .todo-add input[type="date"] {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #b3e6ff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.todo-add input[type="text"]:focus, .todo-add input[type="date"]:focus {
+  border: 1.5px solid #0099cc;
+}
+
+.add-button {
+  flex-shrink: 0;
+  min-width: 90px;
+  background: #0099cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-button:hover {
+  background: #0077aa;
+}
+
+mark {
+  background: #ffe066;
+  border-radius: 3px;
+  padding: 0 2px;
 }

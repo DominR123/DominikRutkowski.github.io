@@ -1,126 +1,168 @@
-// Funkcja walidująca zadanie
-function isValidTask(text, date) {
-  if (text.length < 3 || text.length > 255) return false;
-  if (date) {
-    const today = new Date();
-    const inputDate = new Date(date);
-    today.setHours(0, 0, 0, 0);
-    inputDate.setHours(0, 0, 0, 0);
-    if (inputDate < today) return false;
-  }
-  return true;
-}
-addEventListener('click')
-// Pobierz zadania z localStorage
-function getTasks() {
-  return JSON.parse(localStorage.getItem('tasks') || '[]');
-}
+class Todo {
+  constructor() {
+    this.tasks = this.loadTasks();
+    this.todoList = document.querySelector('.todo-list');
+    this.addBtn = document.querySelector('.add-button');
+    this.textInput = document.querySelector('.todo-add input[type="text"]');
+    this.dateInput = document.querySelector('.todo-add input[type="date"]');
+    this.searchInput = document.querySelector('.search-input');
+    this.filter = '';
 
-// Zapisz zadania do localStorage
-function saveTasks(tasks) {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+    this.draw();
 
-// Renderuj listę zadań
-function renderTasks(filter = '') {
-  const tasks = getTasks();
-  const todoList = document.querySelector('.todo-list');
-  // Usuń wszystko oprócz formularza dodawania
-  todoList.querySelectorAll('.todo-item').forEach(el => el.remove());
-
-  // Filtrowanie i wyróżnianie (opcjonalnie, jeśli chcesz dodać wyszukiwarkę)
-  let filteredTasks = tasks;
-  if (filter && filter.length >= 2) {
-    filteredTasks = tasks.filter(task => task.text.toLowerCase().includes(filter.toLowerCase()));
+    this.addBtn.addEventListener('click', (e) => this.handleAdd(e));
+    this.todoList.addEventListener('click', (e) => this.handleListClick(e));
+    this.todoList.addEventListener('blur', (e) => this.handleBlur(e), true);
+    if (this.searchInput) {
+      this.searchInput.addEventListener('input', () => this.handleSearch());
+    }
   }
 
-  filteredTasks.forEach((task, idx) => {
-    const item = document.createElement('div');
-    item.className = 'todo-item';
+  isValidTask(text, date) {
+    if (text.length < 3 || text.length > 255) return false;
+    if (date) {
+      const today = new Date();
+      const inputDate = new Date(date);
+      today.setHours(0, 0, 0, 0);
+      inputDate.setHours(0, 0, 0, 0);
+      if (inputDate < today) return false;
+    }
+    return true;
+  }
 
-    // Wyróżnianie frazy jeśli jest filtr
-    let displayText = task.text;
-    if (filter && filter.length >= 2) {
-      const re = new RegExp(`(${filter})`, 'gi');
-      displayText = task.text.replace(re, '<mark>$1</mark>');
+  loadTasks() {
+    return JSON.parse(localStorage.getItem('tasks') || '[]');
+  }
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  draw() {
+    // Usuwanie starych elementów
+    this.todoList.querySelectorAll('.todo-item').forEach(el => el.remove());
+
+    let filteredTasks = this.tasks;
+    if (this.filter && this.filter.length >= 2) {
+      filteredTasks = this.tasks.filter(task => task.text.toLowerCase().includes(this.filter.toLowerCase()));
     }
 
-    item.innerHTML = `
-      <span class="todo-checkbox"><input type="checkbox"></span>
-      <span class="todo-text" contenteditable="true">${displayText}</span>
-      <span class="todo-date">${task.date || ''}</span>
-      <button class="delete-button" data-idx="${tasks.indexOf(task)}">Usuń</button>
-    `;
-    // Wstaw przed formularzem dodawania
-    const addForm = todoList.querySelector('.todo-add');
-    todoList.insertBefore(item, addForm);
-  });
+    filteredTasks.forEach((task, idx) => {
+      const item = document.createElement('div');
+      item.className = 'todo-item';
 
-  // Blokowanie entera w każdym polu edycji
-  document.querySelectorAll('.todo-text').forEach(el => {
-    el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.keyCode === 13) {
-        e.preventDefault();
+      let displayText = task.text;
+      if (this.filter && this.filter.length >= 2) {
+        const re = new RegExp(`(${this.filter})`, 'gi');
+        displayText = task.text.replace(re, '<mark>$1</mark>');
       }
+
+      item.innerHTML = `
+        <span class="todo-checkbox"><input type="checkbox"></span>
+        <span class="todo-text" data-idx="${idx}">${displayText}</span>
+        <span class="todo-date" data-idx="${idx}">${task.date || ''}</span>
+        <button class="delete-button" data-idx="${idx}">Usuń</button>
+      `;
+      const addForm = this.todoList.querySelector('.todo-add');
+      this.todoList.insertBefore(item, addForm);
     });
-  });
-}
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderTasks();
-
-  const addBtn = document.querySelector('.add-button');
-  addBtn.addEventListener('click', function (e) {
+  handleAdd(e) {
     e.preventDefault();
-    const textInput = document.querySelector('.todo-add input[type="text"]');
-    const dateInput = document.querySelector('.todo-add input[type="date"]');
-    const text = textInput.value.trim();
-    const date = dateInput.value;
+    const text = this.textInput.value.trim();
+    const date = this.dateInput.value;
 
-    if (!isValidTask(text, date)) {
+    if (!this.isValidTask(text, date)) {
       alert("Zadanie musi mieć 3-255 znaków, a data nie może być z przeszłości.");
       return;
     }
 
-    const tasks = getTasks();
-    tasks.push({ text, date });
-    saveTasks(tasks);
-    renderTasks();
+    this.tasks.push({ text, date });
+    this.saveTasks();
+    this.draw();
 
-    textInput.value = '';
-    dateInput.value = '';
-  });
+    this.textInput.value = '';
+    this.dateInput.value = '';
+  }
 
-  // Usuwanie zadania
-  document.querySelector('.todo-list').addEventListener('click', function(e) {
+  handleListClick(e) {
+    // Usuwanie
     if (e.target.classList.contains('delete-button')) {
       const idx = e.target.getAttribute('data-idx');
-      const tasks = getTasks();
-      tasks.splice(idx, 1);
-      saveTasks(tasks);
-      renderTasks();
+      this.tasks.splice(idx, 1);
+      this.saveTasks();
+      this.draw();
+      return;
     }
-  });
 
-  // Edycja zadania (na blur)
-  document.querySelector('.todo-list').addEventListener('blur', function(e) {
     if (e.target.classList.contains('todo-text')) {
-      const idx = Array.from(document.querySelectorAll('.todo-text')).indexOf(e.target);
-      const tasks = getTasks();
-      // Usuwamy znaczniki <mark> jeśli były
-      const text = e.target.innerText.trim();
-      tasks[idx].text = text;
-      saveTasks(tasks);
-      renderTasks();
-    }
-  }, true);
+      const span = e.target;
+      const idx = span.getAttribute('data-idx');
+      const oldValue = span.innerText;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = oldValue;
+      input.className = 'todo-edit-input';
+      input.setAttribute('data-idx', idx);
+      span.replaceWith(input);
+      input.focus();
 
-  // Wyszukiwarka
-  const searchInput = document.querySelector('.search-input');
-  if (searchInput) {
-    searchInput.addEventListener('input', function() {
-      const filter = searchInput.value.trim();
-      renderTasks(filter);
-    });
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter') input.blur();
+      });
+    }
+
+    if (e.target.classList.contains('todo-date')) {
+      const span = e.target;
+      const idx = span.getAttribute('data-idx');
+      const oldValue = span.innerText;
+      const input = document.createElement('input');
+      input.type = 'date';
+      input.value = oldValue || '';
+      input.className = 'todo-edit-date';
+      input.setAttribute('data-idx', idx);
+      span.replaceWith(input);
+      input.focus();
+
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter') input.blur();
+      });
+    }
   }
+
+  handleBlur(e) {
+    if (e.target.classList.contains('todo-edit-input')) {
+      const idx = e.target.getAttribute('data-idx');
+      const newValue = e.target.value.trim();
+      if (this.isValidTask(newValue, this.tasks[idx].date)) {
+        this.tasks[idx].text = newValue;
+        this.saveTasks();
+        this.draw();
+      } else {
+        alert('Tekst musi mieć 3-255 znaków');
+        this.draw();
+      }
+    }
+    if (e.target.classList.contains('todo-edit-date')) {
+      const idx = e.target.getAttribute('data-idx');
+      const newDate = e.target.value;
+      if (this.isValidTask(this.tasks[idx].text, newDate)) {
+        this.tasks[idx].date = newDate;
+        this.saveTasks();
+        this.draw();
+      } else {
+        alert('Data musi być pusta lub w przyszłości');
+        this.draw();
+      }
+    }
+  }
+
+  handleSearch() {
+    this.filter = this.searchInput.value.trim();
+    this.draw();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.todo = new Todo();
 });
