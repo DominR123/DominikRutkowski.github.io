@@ -1,14 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dominik Rutkowski (57811) - PTW LAB C</title>
-
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <title>Puzzle Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
-
+<div class="top-section">
+    <div class="map-container">
+        <div id="map"></div>
+        <div class="buttons-container">
+            <button id="Loc">Moja lokalizacja</button>
+            <button id="map_downl">Pobierz puzzle</button>
+        </div>
+    </div>
+    <div class="puzzle-board-container">
+        <h3>Ułóż tutaj</h3>
+        <div id="puzzle-board">
+            <div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div>
+            <div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div>
+            <div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div>
+            <div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div><div class="puzzle-slot"></div>
+        </div>
+    </div>
+</div>
+<div class="puzzle-bank-container">
+    <h3>Twoje puzzle (Bank)</h3>
+    <div id="puzzle-bank"></div>
+</div>
 </body>
 </html>
