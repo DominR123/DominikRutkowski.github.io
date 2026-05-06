@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  cursor: url("assets/carrot _black.svg"), auto;
+}
+
+body {
+  margin: 0;
+  max-width: 1440px;
+  background-color: #E5F5EC;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  height: 280px;
+  background-color: white;
+  border: 2px solid silver;
+}
+
+.header-text {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: 40px;
+  font-weight: 600;
+  z-index: 5;
+  letter-spacing: 0.7px;
+  -webkit-text-stroke: 1.5px white;
+  paint-order: stroke fill;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.image-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  filter: opacity(0.6) contrast(120%);
+}
+
+.header-img {
+  flex: 1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-img.img-1 {
+  background-image: url('assets/header_1.jpg');
+  mask-image: linear-gradient(to right, black 80%, transparent);
+}
+
+.header-img.img-2 {
+  background-image: url('assets/header_2.jpg');
+  background-position: center 70%;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.header-img.img-3 {
+  background-image: url('assets/header_3.jpg');
+  mask-image: linear-gradient(to right, transparent, black 15%);
+}
+
+.nr1, .nr2, .nr3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 330px;
+  height: auto;
+  background-color: White;
+  padding: 40px 0;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.text {
+  width: 55%;
+  align-self: flex-start;
+}
+
+.image-container_2 {
+  width: 40%;
+  height: auto;
+  min-height: 300px;
+  align-self: stretch;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-water {
+  background-image: url('assets/drink_water.jpg');
+}
+
+.bg-sport {
+  background-image: url('assets/exercise.jpg');
+}
+
+.bg-food {
+  background-image: url('assets/healthy_eating3.jpg');
+}
+
+.nr1 .text, .nr3 .text {
+  padding-left: 20px;
+}
+
+.nr2 .text {
+  padding-right: 20px;
+}
+
+.text_title {
+  margin-top: 0;
+  width: 100%;
+  padding: 4px 0;
+  background-color: #e0e0eb;
+  text-align: center;
+}
+
+.col-left, .col-right {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin: 10px 0;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  margin: 15px 0 10px 0;
+  width: 100%;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #444444;
+  margin: 10px 0 5px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.text p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0;
+  text-align: justify;
+}
+
+.text ul {
+  font-size: 14px;
+  color: #333333;
+  padding-left: 20px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.text li {
+  margin-bottom: 5px;
+}
+
+footer {
+  display: flex;
+  color: white;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  background-color: #999799;
+  align-items: center;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  header {
+    height: 160px;
+  }
+  .header-text {
+    font-size: 16px;
+    -webkit-text-stroke: 1px white;
+  }
+  .nr1, .nr2, .nr3 {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+  .nr2 {
+    flex-direction: column-reverse;
+  }
+  .image-container_2 {
+    width: 100%;
+    height: 250px;
+  }
+  .text {
+    width: 100%;
+  }
+  .nr1 .text, .nr2 .text, .nr3 .text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  h1, h2 {
+    font-size: 14px;
+  }
+  h1 {
+    letter-spacing: 2px;
+  }
+  h3 {
+    padding: 0 10px;
+  }
+  footer {
+    font-size: 11px;
+  }
+}
