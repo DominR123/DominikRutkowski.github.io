@@ -1,74 +1,73 @@
-// Importowanie ścieżek do plików CSS przez Vite
-import style1Url from './style1.css?url';
-import style2Url from './style2.css?url';
+import style1Url from '/style-1.css?url';
+import style2Url from '/style-2.css?url';
+import style3Url from '/style-3.css?url';
 
-// 1. Słownik dostępnych stylów
 interface StyleDefinition {
     name: string;
     file: string;
 }
 
-const styles: Record<string, StyleDefinition> = {
-    'light': { name: 'Tryb Jasny', file: style1Url },
-    'dark': { name: 'Tryb Ciemny', file: style2Url }
+const stylesDict: Record<string, StyleDefinition> = {
+    'style1': { name: 'Styl 1', file: style1Url },
+    'style2': { name: 'Styl 2', file: style2Url },
+    'style3': { name: 'Styl 3', file: style3Url }
 };
 
-// 2. Stan aplikacji
 let currentStyleKey: string = '';
-
-/**
- * Funkcja zmieniająca styl w dokumencie
- */
-const switchStyle = (styleKey: string): void => {
-    const head = document.querySelector('head');
-    const oldLink = document.getElementById('dynamic-style');
-
-    // Usuwamy stary styl jeśli istnieje
+const changeStyle = (styleKey: string): void => {
+    const head = document.head;
+    const oldLink = document.getElementById('dynamic-css');
     if (oldLink) {
         oldLink.remove();
     }
-
-    // Tworzymy i dodajemy nowy element <link>
     const newLink = document.createElement('link');
-    newLink.id = 'dynamic-style';
+    newLink.id = 'dynamic-css';
     newLink.rel = 'stylesheet';
-    newLink.href = styles[styleKey].file;
+    newLink.href = stylesDict[styleKey].file;
 
-    head?.appendChild(newLink);
+    head.appendChild(newLink);
     currentStyleKey = styleKey;
-
-    console.log(`Zmieniono styl na: ${styles[styleKey].name}`);
+    console.log("Zmieniono na:", styleKey);
 };
-
-/**
- * Funkcja generująca przyciski do zmiany stylów
- */
-const renderStyleSwitcher = (): void => {
+const renderMenu = (): void => {
     const container = document.getElementById('style-switcher');
     if (!container) return;
 
-    // Czyścimy kontener
     container.innerHTML = '';
 
-    // Generujemy przyciski na podstawie słownika
-    Object.keys(styles).forEach(key => {
-        const btn = document.createElement('button');
-        btn.textContent = styles[key].name;
-        btn.className = 'style-btn';
-        btn.onclick = () => switchStyle(key);
-        container.appendChild(btn);
+    container.style.cssText = `
+        position: absolute; 
+        top: 10px; 
+        left: 10px; 
+        z-index: 99999; 
+        display: flex; 
+        gap: 10px;
+        `;
+    Object.keys(stylesDict).forEach(key => {
+        const button = document.createElement('button');
+        button.textContent = stylesDict[key].name;
+        button.style.cssText = `
+            padding: 8px 12px;
+            cursor: pointer;
+            background: white;
+            color: black;
+            border: 2px solid black;
+            font-weight: bold;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        `;
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            changeStyle(key);
+        });
+        container.appendChild(button);
     });
 };
-
-// 3. Inicjalizacja aplikacji
 const init = () => {
-    // Automatyczne podłączenie pierwszego stylu ze słownika
-    const firstStyleKey = Object.keys(styles)[0];
-    switchStyle(firstStyleKey);
-
-    // Wygenerowanie interfejsu
-    renderStyleSwitcher();
+    const keys = Object.keys(stylesDict);
+    if (keys.length > 0) {
+        changeStyle(keys[0]);
+    }
+    renderMenu();
 };
-
-// Start po załadowaniu DOM
-document.addEventListener('DOMContentLoaded', init);
+init();
