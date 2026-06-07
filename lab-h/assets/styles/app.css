@@ -1,3 +1,10 @@
 body {
-    background-color: skyblue;
+    background-color: grey
+}
+.app-header {
+    background-color: #1a1a2e;
+}
+
+.app-footer {
+    background-color: #1a1a2e;
 }
