@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+     <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/books">Books</a></li>
+          </ul>
+        </nav>
+    <main class="index">
+<h1>Book List </h1>
+    <a href="/books/create">Add New Book</a>
+    <ul class="index-list">
+        <% books.forEach(function(book) { %>
+            <li>
+                <h3><%= book.title %><small> (<%= book.author %>, <%= book.year %>)</small></h3>
+                <ul class = "action-list">
+                    <li><a href="/books/<%= book.id %>">Details</a></li>
+                    <li><a href="/books/<%= book.id %>/edit">Edit</a></li>
+                </ul>
+            </li>
+        <% }) %>
+        </ul>
+    </main>
+     </div>
+      </body>
+    </html>
