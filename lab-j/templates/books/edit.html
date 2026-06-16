@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Edytuj książkę: {{ book['title'] }}</h1>
+<form action="{{ url_for('edit', id=book['id']) }}" method="POST" class="edit-form">
+    <div class="form-group">
+        <label>Tytuł: <input type="text" name="title" value="{{ book['title'] }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Autor: <input type="text" name="author" value="{{ book['author'] }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Rok: <input type="number" name="year" value="{{ book['year'] }}" required></label>
+    </div>
+    <input type="submit" value="Aktualizuj">
+</form>
+<ul class="action-list">
+    <li><a href="{{ url_for('show', id=book['id']) }}">Powrót</a></li>
+    <li>
+        <form action="{{ url_for('delete', id=book['id']) }}" method="POST">
+            <input type="submit" value="Usuń książkę" onclick="return confirm('Czy na pewno usunąć książe?');">
+        </form>
+    </li>
+</ul>
+{% endblock %}

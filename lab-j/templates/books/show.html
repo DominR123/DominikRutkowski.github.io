@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1> {{ book['title']}}</h1>
+<article>
+    <p><strong>Author:</strong> {{ book['author'] }}</p>
+    <p><strong>Rok:</strong> {{ book['year'] }}</p>
+</article>
+<ul class="action-list">
+    <li><a href="{{ url_for('index') }}">Powrót do listy</a></li>
+    <li><a href="{{ url_for('edit', id=book['id']) }}">Edytuj</a></li>
+</ul>
+{% endblock %}

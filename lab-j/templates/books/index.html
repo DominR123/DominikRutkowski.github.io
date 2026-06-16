@@ -1,0 +1,16 @@
+{%  extends 'layout.html' %}
+{% block content %}
+<h2>Lista książek</h2>
+<a href="{{ url_for('create') }}">Dodaj nową książke</a>
+<ul class="index-list">
+    {% for book in books %}
+    <li>
+        <h3>{{ book['title'] }} <small>({{ book['author'] }}, {{ book['year'] }})</small></h3>
+        <ul class="action-list">
+            <li><a href="{{ url_for('show', id=book['id']) }}">Szczegóły</a></li>
+            <li><a href="{{ url_for('edit', id=book['id']) }}">Edytuj</a></li>
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
